@@ -87,28 +87,37 @@ import firebase from 'firebase';
   // Navigator
 // } from 'react-native-deprecated-custom-components'
 // import Dashboard from './components/home/DashBoard'
+import Chat from './components/Chat/Chat'
+import Login from './components/Auth2/Login';
+import CreateAccount from './components/Auth2/CreateAccount';
+// import Chat from './components/Chat';
+
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 // import Splash from './components/SplashScreen/splash'
 import {createStackNavigator ,createAppContainer } from 'react-navigation';
 
 
-var config = {
-  apiKey: "AIzaSyDTO_VW8KigcpywWHw8q10DCQBRz0uBW54",
-  authDomain: "zenclause.firebaseapp.com",
-  databaseURL: "https://zenclause.firebaseio.com",
-  projectId: "zenclause",
-  storageBucket: "zenclause.appspot.com",
-  messagingSenderId: "284077417988"
-};
-firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyDTO_VW8KigcpywWHw8q10DCQBRz0uBW54",
+//   authDomain: "zenclause.firebaseapp.com",
+//   databaseURL: "https://zenclause.firebaseio.com",
+//   projectId: "zenclause",
+//   storageBucket: "zenclause.appspot.com",
+//   messagingSenderId: "284077417988"
+// };
+// firebase.initializeApp(config);
 
 
 const App = createStackNavigator({
   // Dashboard: {screen: Dashboard},
   // Splash: {screen: Splash},
-  
-  SignIn: {screen: SignIn},   
+  // Chat :{screen : Chat}, 
+  Login: { screen: Login },
+  CreateAccount: { screen: CreateAccount },
+  Chat: { screen: Chat },
+  // SignIn: {screen: SignIn}, 
+
   // SignUp: {screen: SignUp},
 });
 
