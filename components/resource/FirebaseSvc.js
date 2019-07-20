@@ -147,6 +147,10 @@ class FirebaseSvc {
   
   // send the message to the Backend
   send = messages => {
+    // firebase.database().ref('/').once('value')
+    // .then(function(dataSnapshot) {
+    //  console.log(dataSnapshot.val())
+    // });
     for (let i = 0; i < messages.length; i++) {
       const { text, user } = messages[i];
       const message = {
