@@ -30,6 +30,8 @@ import {createStackNavigator ,createAppContainer } from 'react-navigation';
 
 const App = createStackNavigator({
   // Recording : {screen : Recording},
+  SignUp: { screen: SignUp },
+  SignIn: { screen: SignIn },
   Login: { screen: Login },
   CreateAccount: { screen: CreateAccount },
   Chat: { screen: Chat },

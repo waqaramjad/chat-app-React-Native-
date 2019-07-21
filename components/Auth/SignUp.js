@@ -3,6 +3,8 @@ import { Container, Left , Header, Content, Body, Right, Title, Form, Item, Inpu
 import firebase, { database } from 'firebase';
 import {Expo, AppLoading } from "expo";
 import { View, ScrollView, StyleSheet ,StatusBar ,  TouchableOpacity} from "react-native";
+import { Font } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export default class SignUp extends Component {
@@ -28,14 +30,25 @@ export default class SignUp extends Component {
   static navigationOptions = {
     header : null
   }
-  async componentWillMount() {
+
+  async componentDidMount() {
     await Font.loadAsync({
       'Roboto': require('../resource/Roboto.ttf'),
       'Roboto_medium': require('../resource/Roboto_medium.ttf'),
-      // ...Ionicons.font,
+  ...Ionicons.font,
     });
-    this.setState({ loading: false });
+            this.setState({ loading: false });
+
   }
+
+  // async componentWillMount() {
+  //   await Font.loadAsync({
+  //     'Roboto': require('../resource/Roboto.ttf'),
+  //     'Roboto_medium': require('../resource/Roboto_medium.ttf'),
+  //     // ...Ionicons.font,
+  //   });
+  //   this.setState({ loading: false });
+  // }
 
   
   signupAction = () => {
@@ -153,7 +166,7 @@ export default class SignUp extends Component {
   render() {
 
      if (this.state.loading) {
-      return <View></View>;
+      return <AppLoading />;
     }
     return (
      <Container>

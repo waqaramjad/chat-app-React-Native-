@@ -6,8 +6,8 @@ import {AppLoading} from "expo";
 import { Root } from "native-base";
 import { View, ScrollView, StyleSheet , TouchableOpacity , StatusBar} from "react-native";
 import {AsyncStorage} from 'react-native';
-import  font from 'expo-font'
-
+import { Font } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export default class SignIN extends Component {
@@ -25,15 +25,26 @@ export default class SignIN extends Component {
         header : null
       }
 
-      async componentWillMount() {
+      // async componentWillMount() {
+      //   await Font.loadAsync({
+      //     'Roboto': require('../resource/Roboto.ttf'),
+      //     'Roboto_medium': require('../resource/Roboto_medium.ttf'),
+      //     // 'Ionicons': require("@expo/vector-icons/fonts/Ionicons.ttf"),
+      //   });
+      //   this.setState({ loading: false });
+      //   console.log('test')
+      // }
+
+      async componentDidMount() {
         await Font.loadAsync({
           'Roboto': require('../resource/Roboto.ttf'),
           'Roboto_medium': require('../resource/Roboto_medium.ttf'),
-          // 'Ionicons': require("@expo/vector-icons/fonts/Ionicons.ttf"),
+      ...Ionicons.font,
         });
         this.setState({ loading: false });
-        console.log('test')
+    
       }
+
 
     //   async componentWillMount() {
     //     await Expo.Font.loadAsync({
