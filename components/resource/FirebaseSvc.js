@@ -40,6 +40,16 @@ class FirebaseSvc {
     }
   };
 
+  UserList = ()=> {
+    var UserList
+    firebase.database().ref('users/').once('value')
+   .then(function(dataSnapshot) {
+    return UserList = dataSnapshot.val()
+    console.log('dataSnapshot.val()')
+     console.log(dataSnapshot.val())
+    });
+    // return UserList
+  }
   createAccount = async (user) => {
     firebase.auth()
       .createUserWithEmailAndPassword(user.email, user.password)

@@ -24,15 +24,17 @@ import Example from './components/GiftedTest'
 import SignIn from './components/Auth/SignIn'
 import SignUp from './components/Auth/SignUp'
 import {createStackNavigator ,createAppContainer } from 'react-navigation';
-
+import Home from './components/Home/Home'
 
 
 
 const App = createStackNavigator({
   // Recording : {screen : Recording},
-  SignUp: { screen: SignUp },
-  SignIn: { screen: SignIn },
+  Home: { screen: Home },
   Login: { screen: Login },
+  SignUp: { screen: SignUp },
+
+  SignIn: { screen: SignIn },
   CreateAccount: { screen: CreateAccount },
   Chat: { screen: Chat },
   Example: { screen: Example },
