@@ -81,7 +81,7 @@ componentWillMount(){
                     // console.log(key)
                     var User = UserListState[key]
                     return(
-                        <ListItem avatar key={key}>
+                        <ListItem avatar key={key} onPress={()=>{alert(key)}}>
                         <Left>
                           <Thumbnail source={{ uri: 'Image URL' }} />
                         </Left>
