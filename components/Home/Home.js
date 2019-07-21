@@ -6,6 +6,7 @@ import { View, ScrollView, StyleSheet ,StatusBar ,  TouchableOpacity} from "reac
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import firebaseSvc from '../resource/FirebaseSvc';
+// import { userInfo } from 'os';
 // import console = require('console');
 
 
@@ -61,7 +62,7 @@ componentWillMount(){
 
 
   render() {
-
+var that = this 
      if (this.state.loading) {
       return <AppLoading />;
     }
@@ -81,7 +82,11 @@ componentWillMount(){
                     // console.log(key)
                     var User = UserListState[key]
                     return(
-                        <ListItem avatar key={key} onPress={()=>{alert(key)}}>
+                        <ListItem avatar key={key} onPress={()=>{ that.props.navigation.navigate('Chat', {
+                            name: User.name,
+                            email: User.email,
+                            avatar:User.avatar,
+                          });}}>
                         <Left>
                           <Thumbnail source={{ uri: 'Image URL' }} />
                         </Left>
