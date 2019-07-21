@@ -46,6 +46,8 @@ class FirebaseSvc {
       .then(function() {
         console.log("created user successfully. User email:" + user.email + " name:" + user.name);
         var userf = firebase.auth().currentUser;
+        console.log(userf.uid)
+        firebase.database().ref('users/'+userf.uid+'/').update(user)
         userf.updateProfile({ displayName: user.name})
         .then(function() {
           console.log("Updated displayName successfully. name:" + user.name);
