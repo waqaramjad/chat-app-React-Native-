@@ -6,6 +6,7 @@ import { View, ScrollView, StyleSheet ,StatusBar ,  TouchableOpacity} from "reac
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import firebaseSvc from '../resource/FirebaseSvc';
+import {AsyncStorage} from 'react-native';
 // import { userInfo } from 'os';
 // import console = require('console');
 
@@ -33,11 +34,19 @@ export default class Home extends Component {
 componentWillMount(){
     // var UserList = firebaseSvc.UserList()
     var that = this
+
+   var  _storeData = async () => {
+      try {
+        await AsyncStorage.setItem('loginUser', 'I like to save it.');
+      } catch (error) {
+        // Error saving data
+      }
+    };
     console.log('dataSnapshot.val() 1')
     firebase.database().ref('users/').once('value')
     .then(function(dataSnapshot) {
-        console.log('dataSnapshot.val()')
-        console.log(dataSnapshot.val())
+        // console.log('dataSnapshot.val()')
+        // console.log(dataSnapshot.val())
         var List = dataSnapshot.val()
         that.setState({
             Userlist : List
@@ -45,7 +54,7 @@ componentWillMount(){
      });
  
     
-    console.log(this.state.UserList)
+    // console.log(this.state.UserList)
     console.log('UserList')
 }
 
@@ -66,7 +75,7 @@ var that = this
      if (this.state.loading) {
       return <AppLoading />;
     }
-    console.log(this.state)
+    // console.log(this.state)
     var UserListState = this.state.Userlist
     return (
         <Container>
@@ -86,6 +95,7 @@ var that = this
                             name: User.name,
                             email: User.email,
                             avatar:User.avatar,
+                            RecevierUID : key
                           });}}>
                         <Left>
                           <Thumbnail source={{ uri: 'Image URL' }} />

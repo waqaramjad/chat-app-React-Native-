@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import uuid from 'uuid';
+import {AsyncStorage} from 'react-native';
 
 const config = {
   apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
@@ -10,6 +11,19 @@ const config = {
   messagingSenderId: "676235345078",
 }
 
+_retrieveData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('loginUser');
+    if (value !== null) {
+      // We have data!!
+      console.log(value);
+    }
+  } catch (error) {
+    // Error retrieving data
+  }
+}
+
+var GlobalUser  
 class FirebaseSvc {
   constructor() {
     if (!firebase.apps.length) {
@@ -19,6 +33,7 @@ class FirebaseSvc {
     }
   }
 
+  
   login = async(user, success_callback, failed_callback) => {
     console.log("logging in");
     const output = await firebase.auth().signInWithEmailAndPassword(user.email, user.password)
@@ -46,7 +61,7 @@ class FirebaseSvc {
    .then(function(dataSnapshot) {
     return UserList = dataSnapshot.val()
     console.log('dataSnapshot.val()')
-     console.log(dataSnapshot.val())
+    //  console.log(dataSnapshot.val())
     });
     // return UserList
   }
@@ -128,7 +143,7 @@ class FirebaseSvc {
   }
 
   get ref() {
-    return firebase.database().ref('Messages');
+    return firebase.database().ref(user.id+'/Messages/'+GlobalUser.RecevierUID);
   }
 
   parse = snapshot => {
@@ -170,7 +185,11 @@ class FirebaseSvc {
         user,
         createdAt: this.timestamp,
       };
-      this.ref.push(message);
+     console.log('user', user)
+      // GlobalUser = user
+
+      // this.ref.push(message);
+      // firebase.database().ref(user.RecevierUID+'/Messages/'+user.id).push(message)
     }
   };
 

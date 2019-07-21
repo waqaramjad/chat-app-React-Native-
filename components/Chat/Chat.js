@@ -24,11 +24,18 @@ class Chat extends React.Component<Props> {
 
   get user() {
     return {
-      name: this.props.navigation.state.params.name,
-      email: this.props.navigation.state.params.email,
+      name: "WAQAR AMJAD" ,
+      email: "test3@gmail.com",
       avatar: this.props.navigation.state.params.avatar,
-      id: firebaseSvc.uid,
-      _id: firebaseSvc.uid, // need for gifted-chat
+      RecevierUID: this.props.navigation.state.params.RecevierUID,
+      id: 'xSiLKMWW0aWK8u4H6uS7hOH7mEg1',
+      _id: 'xSiLKMWW0aWK8u4H6uS7hOH7mEg1', // need for gifted-chat
+      // name: this.props.navigation.state.params.name,
+      // email: this.props.navigation.state.params.email,
+      // avatar: this.props.navigation.state.params.avatar,
+      // id: firebaseSvc.uid,
+      // _id: firebaseSvc.uid, // need for gifted-chat
+
     };
   }
 
@@ -42,13 +49,15 @@ class Chat extends React.Component<Props> {
     );
   }
 
-  componentDidMount() {
-    firebaseSvc.refOn(message =>
-      this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, message),
-      }))
-    );
-  }
+  // componentDidMount() {
+  //   firebaseSvc.refOn(message =>{
+  //     // GlobalUser = this.user
+  //     this.setState(previousState => ({
+  //       messages: GiftedChat.append(previousState.messages, message),
+  //     }))
+  //   }
+  //   );
+  // }
   componentWillUnmount() {
     firebaseSvc.refOff();
   }
